@@ -77,29 +77,29 @@
             this.data = {}; 
         }
 
-        get(index){
+        get(index){ // O(1)
             return this.data[index]
         }
 
-        push(item){
+        push(item){ // O(1)
             this.data[this.length] = item
             this.length++; 
             return this.length; 
         }
 
-        pop(){
+        pop(){ // O(1)
             const lastItem = this.data[this.length - 1];
             delete this.data[this.length-1]; 
             this.length--; 
             return lastItem;
         }
 
-        delete(index){
+        delete(index){ // O(n)
             const item = this.data[index]; 
             this.shiftItems(index); 
         }
 
-        shiftItems(index) {
+        shiftItems(index) { // O(n)
             for(let i = index; i < this.length - 1; i++){
                 this.data[i] = this.data[i + 1]
             }
@@ -117,4 +117,62 @@
      newArray.push('nice');
      newArray.delete(1);
 
-     console.log(newArray);
+    //  console.log(newArray);
+
+     // Treat any strings questions as an array question 
+
+     /**
+      * Reverse a string
+      */
+
+     function reverse(str){
+        if(!str || str.length <2 || typeof Str !== 'string'){
+            return 'Please pass a string'; 
+        }
+
+        reveresed = ''
+        for(i = str.length - 1; i >= 0; i--){ // O(n)
+            reveresed += str[i]; 
+        }
+
+        return reveresed;
+     }
+
+     test = 'does this work?';
+
+    //  console.log(reverse(test));
+    
+    function reverse2(str){
+        return str.split('').reverse().join(''); 
+    }
+
+    const reverse3 = str => [...str].reverse().join(''); 
+
+    /**
+     * Given two sorted arrays merge them into a new sorted array.
+     */
+
+    let array1 = [0, 3, 4, 31];
+    let array2 = [4, 6, 30, 32, 38];
+
+    function mergeSortedArrays(array1, array2) {  // O(a + b)
+        mergedArray = [];
+        maxLength = array1.length > array2.length ? array1.length - 1 : array2.length -1;
+        index1 = 0; 
+        index2 = 0; 
+        
+        while( index1 != array1.length || index2 != array2.length){
+            if(array1[index1] <= array2[index2]){
+                mergedArray.push(array1[index1]);
+                index1++; 
+            }
+            else{
+                mergedArray.push(array2[index2]);
+                index2++; 
+            }
+        }
+        return mergedArray; 
+    }
+
+    console.log(mergeSortedArrays(array1, array2));
+
