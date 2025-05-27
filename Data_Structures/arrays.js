@@ -152,16 +152,15 @@
      * Given two sorted arrays merge them into a new sorted array.
      */
 
-    let array1 = [0, 3, 4, 31];
+    let array1 = [0, 3, 4, 39];
     let array2 = [4, 6, 30, 32, 38];
 
     function mergeSortedArrays(array1, array2) {  // O(a + b)
-        mergedArray = [];
-        maxLength = array1.length > array2.length ? array1.length - 1 : array2.length -1;
-        index1 = 0; 
-        index2 = 0; 
+        const mergedArray = [];
+        let index1 = 0; 
+        let index2 = 0; 
         
-        while( index1 != array1.length || index2 != array2.length){
+        while(index1 < array1.length && index2 < array2.length){
             if(array1[index1] <= array2[index2]){
                 mergedArray.push(array1[index1]);
                 index1++; 
@@ -171,6 +170,17 @@
                 index2++; 
             }
         }
+
+        while (index1 < array1.length) {
+            mergedArray.push(array1[index1]);
+            index1++;
+        }
+    
+        while (index2 < array2.length) {
+            mergedArray.push(array2[index2]);
+            index2++;
+        }
+
         return mergedArray; 
     }
 
