@@ -1,0 +1,61 @@
+/**
+ * Linked List: Contains a set of nodes with two elements, the value and a pointer. 
+ *  - The first node is called the head.
+ *  - The last node is the tail. 
+ *  - Null terminated. 
+ *  - Must be transversed to find elements. 
+ * 
+ *   Java Script doesn't have built in linked list. 
+ */
+
+/**
+ *  Pointer: A reference to anothe place in memory. 
+ */
+
+const obj1 = {a: true};
+const obj2 = obj1; // <- this creates a pointer. 
+
+/**
+ * Custom linked list
+ */
+
+class LinkedList {
+
+    constructor(value){
+        this.head = {
+            value: value,
+            next: null
+        }
+        this.tail = this.head; 
+        this.length = 1; 
+    }
+
+    append(value) {
+        const newNode = {
+            value: value,
+            next: null
+        };
+       this.tail.next = newNode; 
+       this.tail = newNode; 
+       this.length ++; 
+       return this; 
+    }
+
+    prepend(value){
+        const newNode = {
+            value: value,
+            next: null
+        }
+        newNode.next = this.head; 
+        this.head = newNode; 
+        this.length ++; 
+        return this; 
+    }
+}
+
+const myLinkedList = new LinkedList(10); 
+myLinkedList.append(5);
+myLinkedList.append(16); 
+myLinkedList.prepend(1); 
+
+console.log(myLinkedList); 
