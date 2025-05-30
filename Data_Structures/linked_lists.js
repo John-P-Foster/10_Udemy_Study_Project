@@ -19,6 +19,14 @@ const obj2 = obj1; // <- this creates a pointer.
  * Custom linked list
  */
 
+class Node{
+    constructor(value){
+        this.value = value; 
+        this.next = null; 
+    }
+
+}
+
 class LinkedList {
 
     constructor(value){
@@ -31,10 +39,7 @@ class LinkedList {
     }
 
     append(value) {
-        const newNode = {
-            value: value,
-            next: null
-        };
+       const newNode = new Node(value); 
        this.tail.next = newNode; 
        this.tail = newNode; 
        this.length ++; 
@@ -42,14 +47,38 @@ class LinkedList {
     }
 
     prepend(value){
-        const newNode = {
-            value: value,
-            next: null
-        }
+        const newNode = new Node(value); 
         newNode.next = this.head; 
         this.head = newNode; 
         this.length ++; 
         return this; 
+    }
+
+    printList(){
+        const array = []; 
+        let currentNode = this.head; 
+        while(currentNode !== null){
+            array.push(currentNode.value);
+            currentNode = currentNode.next; 
+        }
+        return array; 
+    }
+
+    insert(index, value){
+        if(index > this.length){
+            return; 
+        } 
+        let newNode = new Node(value); 
+        let currentNode = this.head; 
+        let lastNode = new Node(0); 
+
+        for(let i = 1; i < index; i ++){
+            lastNode = currentNode; 
+            currentNode = currentNode.next; 
+        }
+
+        lastNode.next = newNode;
+        newNode.next = currentNode; 
     }
 }
 
@@ -57,5 +86,6 @@ const myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
 myLinkedList.append(16); 
 myLinkedList.prepend(1); 
+myLinkedList.insert(2,5);
 
-console.log(myLinkedList); 
+console.log(myLinkedList.printList());
