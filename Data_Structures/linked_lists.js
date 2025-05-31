@@ -179,6 +179,29 @@ class DoublyLinkedList {
         this.head = first; 
         return this.printList();
     }
+
+    reverseNodeAgain(){
+        if(!this.head.next){
+            return this.head;
+        }
+
+        let prev = null;
+        let current = this.head; 
+
+        while(current){
+           let next = current.next; 
+           current.next = prev;
+           prev = current;
+           current = next; 
+        }
+
+        this.head.next = null; 
+        this.tail = this.head; 
+
+        this.head = prev;
+    
+        return this.printList();
+    }
     
 }
 
@@ -194,4 +217,5 @@ console.log(myLinkedList.printList());
 
 console.log(myLinkedList.reverse());
 console.log(myLinkedList.reverse2());
-console.log(myLinkedList.reverseThisList())
+// console.log(myLinkedList.reverseThisList())
+console.log(myLinkedList.reverseNodeAgain())
