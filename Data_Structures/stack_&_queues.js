@@ -58,18 +58,24 @@ class Stack {
         this.length = 0; 
     }
 
-    peek(){
+    peek(){ //O(1)
         return this.top.value;
     }
 
-    push(value){
-        let node = new Node(value);
-        node.next = this.top;
-        this.top = node; 
+    push(value){ //O(1)
+        let newNode = new Node(value);
+        if(this.length === 0){
+            this.bottom = newNode; 
+        }
+
+        newNode.next = this.top;
+        this.top = newNode; 
         this.length ++; 
     }
 
-    pop(){
+    pop(){ //O(1)
+        if(!this.top){return null;}
+        if(this.length === 0){this.bottom = null;}
         let temp = this.top;
         this.top = this.top.next; 
         this.length --; 
@@ -84,3 +90,80 @@ myStack.push(4);
 myStack.push(3);
 
 console.log(myStack.pop())
+console.log(myStack.pop())
+console.log(myStack.pop())
+
+
+class ArrayStack{
+    constructor(){
+        this.array = [];
+        this.top = this.array[this.array.length -1]; 
+        this.bottom = this.array[0]; 
+    }
+
+    peek(){
+        return this.array[this.array.length - 1]
+    }
+
+    push(value){
+        this.array.push(value);
+    }
+
+    pop(){
+        return this.array.pop();
+    }
+}
+
+let myArrayStack = new ArrayStack();
+myArrayStack.push(5);
+myArrayStack.push(4);
+myArrayStack.push(3);
+
+console.log(myArrayStack.pop())
+console.log(myArrayStack.pop())
+console.log(myArrayStack.pop())
+
+
+class Queue {
+    constructor(){
+        this.first = null;
+        this.last = null; 
+        this.length = 0;
+    }
+
+    peek(){
+        return this.first.value; 
+    }
+
+    enqueue(value){
+        let newNode = new Node(value);
+        
+        if(this.length === 0){
+            this.first = newNode;
+            this.last = newNode
+            this.length ++;
+            return; 
+        }
+        this.last.next = newNode; 
+        this.last = newNode;
+        this.length ++;
+        return;
+    }
+
+    dequeue(){
+        let temp = this.first;
+        this.first = temp.next;
+        this.length --; 
+        return temp.value; 
+    }
+
+}   
+
+const myQueue = new Queue();
+
+myQueue.enqueue('matt');
+myQueue.enqueue('mia');
+myQueue.enqueue('frank');
+
+console.log(myQueue.dequeue());
+console.log(myQueue.dequeue());
