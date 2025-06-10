@@ -1,6 +1,21 @@
 /**
  * Recursion
  *  - A function that calls itself.
+ * 
+ *  - Anything that can be done with recursion can normally be solved
+ *  with iterative loops. 
+ * 
+ * - Recursion can help to keep the code dry - lacking repeating code. 
+ * 
+ * - Adds a lot of function calls to the stack.
+ * 
+ * - Very useful when you don't know how deep the data structure is.
+ *      - This is great for searching trees and graphs.
+ * 
+ * Think about using Recursion when
+ *  - Divided into a number of subproblems that are smaller instance of the same problem.
+ *  - Each instance of the subproblem is identical in nature. 
+ *  - The solutions of each subproblem can be combined to solve the problem at hand.  
  */
 
 /**
@@ -37,7 +52,7 @@ console.log(findFactorialIterative(5))
  *  
  */
 
-function fibonacciIterative(n){
+function fibonacciIterative(n){ // O(n)
     let a = 0; 
     let b = 1; 
     let result = 0; 
@@ -58,8 +73,9 @@ function fibonacciIterative(n){
 
 console.log(fibonacciIterative(10))
 
-function fibonacciIterativeRecursive(n){
+function fibonacciIterativeRecursive(n){ // O(2^n)
     if(n < 2){return n; }
+
     return fibonacciIterativeRecursive(n - 1 ) + fibonacciIterativeRecursive(n - 2);
 
 }
