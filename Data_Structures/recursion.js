@@ -29,3 +29,47 @@ function findFactorialIterative(number){
 }
 
 console.log(findFactorialIterative(5))
+
+/**
+ *  Given a number N return the index value of the fibonacci sequence, where the 
+ *  sequence is:
+ *  0,1,1,2,3,5,8,13,21,34,55,89,144...
+ *  
+ */
+
+function fibonacciIterative(n){
+    let a = 0; 
+    let b = 1; 
+    let result = 0; 
+
+    if(n === 0){ return 0};
+    if(n === 1){ return 1};
+
+    for(let i = 2; i < n; i ++){
+        result = a + b; 
+        a = b; 
+        b = result; 
+    }
+
+    result = a + b; 
+
+    return result
+
+}
+
+console.log(fibonacciIterative(10))
+
+function fibonacciIterativeRecursive(n){
+    if(n === 0){
+        return 0;
+    }
+
+    if(n === 1){
+        return 1; 
+    }
+
+    return fibonacciIterativeRecursive(n - 1 ) + fibonacciIterativeRecursive(n - 2);
+
+}
+
+console.log(fibonacciIterativeRecursive(10))
