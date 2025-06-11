@@ -1,5 +1,5 @@
 const letters = ['a','e','w','g','k','y','j' ];
-const basket = [2, 56, 34, 2, 5, 7, 8];
+//const basket = [5, 3, 4, 2, 1];
 
 // JavaScripts sort method converts numbers to characters and compairs the values.
 console.log(letters.sort())
@@ -37,4 +37,30 @@ function bubbleSort(array){
 
 /**
  * Selection Sort 
+ *  - searches for the smallest item by keeping track of the smallest item seen
+ *    and moves the smallest item to the current loop index. 
  */
+
+function selectionSort(array){
+    for(let i = 0; i < array.length; i++){
+        let smallestIndex = i; 
+        for(let j = i; j < array.length; j ++){
+            if(array[smallestIndex] > array[j]){
+              smallestIndex = j;
+            }
+            console.log(array);
+        }
+        if(smallestIndex != i){
+            let temp = array[i];
+            array[i] = array[smallestIndex];
+            array[smallestIndex] = temp; 
+        }
+    }
+}
+
+// selectionSort(basket); 
+// console.log(basket); 
+
+const basket = [7, 3, 5, 1, 9];
+selectionSort(basket);
+console.log(basket);
