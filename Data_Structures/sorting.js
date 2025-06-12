@@ -148,3 +148,34 @@ function merge(left, right){
 
 const answer = mergeSort(mergeNumbers);
 console.log(answer)
+
+/**
+ * Quick Sort
+ * - Another deviding algo and is O(n log n)
+ * - Picks a random pivot and moves all smaller items to the left and larger to the right. 
+ */
+
+
+// Practice Questions: 
+// #1 - Sort 10 schools around your house by distance:
+    // - Insertation Sort. BC easy to code, small set of items. 
+
+// #2 - eBay sorts listings by the current Bid amount:
+    // - Radix or Counting sort. Bids are a set range of numbers. 
+
+// #3 - Sport scores on ESPN:
+    // - quick Sort
+
+// #4 - Massive database
+    // - Merge Sort
+
+// #5 - Almost sorted Udemy review data needs to update and add 2 new reviews:
+    // Insertation Sort
+
+// #6 - Temperature Records for the past 50 years in Canada:
+
+// #7 - Large user name database needs to be sorted. Data is very random:
+    // - Merge Sort
+
+// #8 - You want to teach sorting for the first time:
+    // Bubble sort or selection sort. 
