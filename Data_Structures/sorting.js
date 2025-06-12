@@ -2,7 +2,7 @@ const letters = ['a','e','w','g','k','y','j' ];
 //const basket = [5, 3, 4, 2, 1];
 
 // JavaScripts sort method converts numbers to characters and compairs the values.
-console.log(letters.sort())
+// console.log(letters.sort())
 // console.log(basket.sort(function(a, b){
 //     return a - b; 
 // }));
@@ -62,8 +62,8 @@ function selectionSort(array){
 // console.log(basket); 
 
 const basket = [7, 3, 5, 1, 9];
-selectionSort(basket);
-console.log(basket);
+// selectionSort(basket);
+// console.log(basket);
 
 /**
  * Insertion Sort
@@ -93,4 +93,58 @@ function insertionSort(array) {
     return array;
 }
 
-console.log(insertionSort(numbers));
+// console.log(insertionSort(numbers));
+
+/**
+ * Merge Sort
+ * - Can complete a sorting in O (n Log n) time, with SO(n)
+ */
+
+const mergeNumbers = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
+
+function mergeSort (array) {
+  if (array.length === 1) {
+    return array
+  }
+
+  let left = array.splice(0, array.length / 2); 
+  let right = array;
+
+
+  return merge(
+    mergeSort(left),
+    mergeSort(right)
+  )
+}
+
+function merge(left, right){
+    let merged = [];
+    let leftIndex = 0;
+    let rightIndex = 0; 
+
+    while(leftIndex < left.length && rightIndex < right.length){
+        if(left[leftIndex] < right[rightIndex]){
+            merged.push(left[leftIndex]);
+            leftIndex ++; 
+        }else{
+            merged.push(right[rightIndex]);
+            rightIndex++; 
+        }
+    }
+
+    while(leftIndex < left.length){
+        merged.push(left[leftIndex]);
+        leftIndex ++; 
+    }
+
+    while(rightIndex < right.length){
+        merged.push(right[rightIndex]);
+        rightIndex++; 
+    }
+
+    return merged; 
+}
+
+
+const answer = mergeSort(mergeNumbers);
+console.log(answer)
