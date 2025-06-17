@@ -197,6 +197,59 @@ class BinarySearchTree{
 
         return(this.breadthFirstSearchR(queue, list))
       }
+
+      DFSInOrder(){
+        return traverseInOrder(this.root, [])
+      }
+
+      DFSPostOrder(){
+        return traversePostOrder(this.root, [])
+      }
+
+      DFSPreOrder(){
+        return traversePreOrder(this.root, [])
+      }
+}
+
+// Note that the only thing that needs to move is when the value is pushed to the list. 
+function traverseInOrder(node, list){
+  console.log(node.value);
+  if(node.left){
+    traverseInOrder(node.left, list)
+  }
+  //Logging the left child first
+  list.push(node.value);
+  if(node.right){
+    traverseInOrder(node.right, list);
+  }
+  return list; 
+}
+
+function traversePreOrder(node, list){
+  // Logging the parrent first
+  console.log(node.value);
+  list.push(node.value);
+  if(node.left){
+    traversePreOrder(node.left, list)
+  }
+  if(node.right){
+    traversePreOrder(node.right, list);
+  }
+  return list; 
+}
+
+function traversePostOrder(node, list){
+
+  console.log(node.value);
+  if(node.left){
+    traversePostOrder(node.left, list)
+  }
+  if(node.right){
+    traversePostOrder(node.right, list);
+  }
+    // Logging the right child first
+    list.push(node.value);
+  return list; 
 }
 
 let tree = new BinarySearchTree(); 
@@ -224,5 +277,8 @@ function traverse(node) {
   return tree;
 }
 
-console.log(tree.breadthFirstSearch());
-console.log(tree.breadthFirstSearchR([tree.root], []));
+// console.log(tree.breadthFirstSearch());
+// console.log(tree.breadthFirstSearchR([tree.root], []));
+console.log(tree.DFSInOrder());
+console.log(tree.DFSPreOrder());
+console.log(tree.DFSPostOrder());
