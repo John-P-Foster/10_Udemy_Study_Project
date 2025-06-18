@@ -213,7 +213,7 @@ class BinarySearchTree{
 
 // Note that the only thing that needs to move is when the value is pushed to the list. 
 function traverseInOrder(node, list){
-  console.log(node.value);
+  // console.log(node.value);
   if(node.left){
     traverseInOrder(node.left, list)
   }
@@ -227,7 +227,7 @@ function traverseInOrder(node, list){
 
 function traversePreOrder(node, list){
   // Logging the parrent first
-  console.log(node.value);
+  // console.log(node.value);
   list.push(node.value);
   if(node.left){
     traversePreOrder(node.left, list)
@@ -240,7 +240,7 @@ function traversePreOrder(node, list){
 
 function traversePostOrder(node, list){
 
-  console.log(node.value);
+  // console.log(node.value);
   if(node.left){
     traversePostOrder(node.left, list)
   }
